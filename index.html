@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Angličtina s Katkou – jednodušší plán (verze 2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #c42040; --brand-dark: #9e1832; --brand-soft: #ffe3e8; --tint: #fff5f7;
+    --line: #f2d3d8; --fg: #1d1d22; --muted: #5f5f6b; --ink: #2a1a20;
+    --ok: #2e8b4e; --warn: #d2641a; --note: #fff6c2;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; color: var(--fg); background: linear-gradient(180deg, #ffebeb, #fff 420px) #fff; font: 16px/1.55 "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding-bottom: 84px; }
+  .slide { max-width: 980px; margin: 0 auto; padding: 28px 16px; scroll-margin-top: 8px; }
+  .inner { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 24px 18px; box-shadow: 0 8px 28px rgba(196,32,64,.10); }
+  .num { font-size: 13px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--brand); margin: 0 0 6px; }
+  h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; text-wrap: balance; }
+  h1 { font-size: clamp(30px, 7.5vw, 48px); font-weight: 800; letter-spacing: -.5px; }
+  h2 { font-size: clamp(23px, 5.4vw, 32px); font-weight: 800; }
+  h3 { font-size: 18px; font-weight: 700; }
+  p { margin: 0 0 12px; }
+  .lead { font-size: 18px; color: var(--muted); }
+  .muted { color: var(--muted); } .small { font-size: 14px; }
+  ul { margin: 0 0 12px; padding-left: 20px; } li { margin-bottom: 6px; }
+  .grid { display: grid; gap: 14px; margin-top: 16px; }
+  .box { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: #fff; }
+  .box.pro { border-left: 5px solid var(--ok); } .box.con { border-left: 5px solid var(--warn); }
+  .box.hi { border: 2px solid var(--brand); background: var(--tint); }
+  .box h3 { margin-bottom: 8px; }
+  .box ul { margin-bottom: 0; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-dark); margin: 0 6px 8px 0; }
+  .tag.no { background: #f1f1f3; color: #55555f; } .tag.yes { background: #e3f6e8; color: #1f6b39; } .tag.dark { background: var(--ink); color: #fff; }
+  .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 14px 0 4px; }
+  .fact { background: var(--tint); border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
+  .fact b { display: block; font-size: 17px; color: var(--brand-dark); } .fact span { font-size: 13px; color: var(--muted); }
+  .tbl { overflow-x: auto; margin-top: 16px; border: 1px solid var(--line); border-radius: 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 620px; }
+  th, td { padding: 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--brand); color: #fff; }
+  tbody tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 700; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 10px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; background: var(--brand); color: #fff; border: 2px solid var(--brand); }
+  .btn.ghost { background: #fff; color: var(--brand); }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .warn { background: var(--note); border-left: 4px solid #e6c84a; border-radius: 8px; padding: 10px 12px; font-size: 14px; color: #4a3f10; margin-top: 14px; }
+  .steps { counter-reset: s; display: grid; gap: 10px; margin-top: 16px; }
+  .step { position: relative; padding: 14px 14px 14px 58px; border: 1px solid var(--line); border-radius: 14px; }
+  .step::before { counter-increment: s; content: counter(s); position: absolute; left: 14px; top: 14px; width: 30px; height: 30px; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 800; display: grid; place-items: center; }
+  .step b { display: block; } .step span { color: var(--muted); font-size: 14px; }
+  .q { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; cursor: pointer; }
+  .q input { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--brand); flex: none; }
+  .q b { display: block; } .q span { color: var(--muted); font-size: 14px; }
+  .cover { text-align: center; padding: 48px 18px; }
+  .cover .logo { font-weight: 800; font-size: 18px; margin-bottom: 18px; } .cover .logo span { color: var(--brand); }
+  nav.bar { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,.97); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 10; }
+  nav.bar button { min-height: 46px; min-width: 96px; border-radius: 999px; border: 2px solid var(--brand); background: #fff; color: var(--brand); font: inherit; font-weight: 700; cursor: pointer; }
+  nav.bar button.next { background: var(--brand); color: #fff; }
+  nav.bar button:disabled { opacity: .35; cursor: default; }
+  #pos { font-weight: 700; color: var(--muted); font-size: 14px; text-align: center; }
+  @media (min-width: 780px) {
+    .slide { min-height: 100vh; display: flex; align-items: center; padding: 40px 16px; }
+    .inner { padding: 44px; width: 100%; }
+    .g2 { grid-template-columns: repeat(2, 1fr); } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); }
+    .facts { grid-template-columns: repeat(4, 1fr); }
+    .steps.cols { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media print { nav.bar { display: none; } .slide { min-height: 0; page-break-inside: avoid; } body { background: #fff; } }
+</style>
+</head>
+<body>
+
+<section class="slide"><div class="inner cover">
+  <p class="logo">Angličtina <span>s Katkou</span></p>
+  <h1>Jednodušší plán: jedna cesta, tři produkty</h1>
+  <p class="lead">Verze 2 prezentace · bez firem a bez dalších lektorů · 16.11.2026</p>
+  <p class="muted small">Posouvejte se dolů, nebo použijte tlačítka dole a šipky na klávesnici.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+  <p class="num">Výchozí bod</p>
+  <h2>Původní plán byl překombinovaný</h2>
+  <p class="lead">Devět zdrojů příjmů a čtyři prototypy jsou přehled možností, ne plán pro dva lidi, kteří to dělají vedle jiné práce.</p>
+  <div class="grid g2">
+    <div class="box con"><h3>Co teď vynecháváme</h3><ul>
+      <li><b>Firmy.</b> Dlouhý prodej, smlouvy, někdo musí obchodovat.</li>
+      <li><b>Další lektory.</b> Vedení lidí je jiná práce než učení.</li>
+      <li><b>Klub</b> v obou podobách. Chce vlastní aplikaci a tisíce kontaktů.</li>
+      <li><b>Trenažér s AI a portál.</b> Vývoj dřív, než je zájem.</li>
+      <li><b>Kurz na doma.</b> Natáčení až později.</li>
+    </ul></div>
+    <div class="box pro"><h3>Co zůstává</h3><ul>
+      <li>Nový web s testem jako vstupem.</li>
+      <li>Jeden levný produkt, který se prodává sám.</li>
+      <li>Skupinky, kde hodina vynese trojnásobek.</li>
+      <li>Pohovor na míru jako dražší služba.</li>
+      <li>Lekce 1:1 a konzultace jako dnes.</li>
+    </ul></div>
+  </div>
+  <p class="warn">Vynechané věci nejsou špatné. Jen nedávají smysl, dokud nefunguje základ. Na straně 9 je, kdy se k nim vrátit.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+  <p class="num">Na co se zaměřit</p>
+  <h2>Jedna cesta od návštěvníka k platbě</h2>
+  <div class="steps">
+    <div class="step"><b>Test zdarma</b><span>Pět minut, výsledek hned. Kdo chce plán, nechá e-mail.</span></div>
+    <div class="step"><b>E-mail jednou týdně</b><span>Jedna fráze, jedno cvičení. Připomíná se a buduje seznam kontaktů.</span></div>
+    <div class="step"><b>Balíček za 390 Kč</b><span>První malý nákup, bez Katčiny práce.</span></div>
+    <div class="step"><b>Konzultace zdarma</b><span>Pro ty, kdo chtějí víc. Jen několik termínů týdně.</span></div>
+    <div class="step"><b>Skupinka, Pohovor na míru nebo lekce 1:1</b><span>Tady jsou hlavní peníze.</span></div>
+  </div>
+  <div class="box hi" style="margin-top:14px"><p style="margin:0"><b>Kdybych měl vybrat jedinou věc:</b> seznam e-mailů. Všechno ostatní se z něj prodává: balíček, skupinka i lekce. Bez něj musí každý produkt hledat zákazníky od nuly.</p></div>
+</div></section>
+
+<section class="slide"><div class="inner">
+  <p class="num">Nabídka</p>
+  <h2>Tři produkty a lekce jako dnes</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Produkt</th><th>Co to je</th><th>Cena (návrh)</th><th>Katčin čas</th><th>Co chybí</th></tr></thead>
+    <tbody>
+      <tr><td>Balíček Na cesty</td><td>2 e-booky, 3 sady cvičení, tahák frází</td><td>390 Kč</td><td>žádný, jen schválit</td><td>tahák, cena, košík</td></tr>
+      <tr><td>Skupinka</td><td>6 týdnů, 4–6 lidí, před létem i zimou</td><td>1 990 Kč</td><td>asi 10 hodin na kurz</td><td>termín, přihlášky</td></tr>
+      <tr><td>Pohovor na míru</td><td>odpovědi podle životopisu, 2 lekce nanečisto</td><td>2 990 Kč</td><td>asi 3,5 hodiny na klienta</td><td>stránka, šablona</td></tr>
+      <tr><td>Lekce 1:1</td><td>jako dnes, nově i měsíční tarif</td><td>beze změny</td><td>jako dnes</td><td>nic</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid g3">
+    <div class="box"><h3>Proč balíček</h3><p class="muted small" style="margin:0">Jediná věc, která vydělá, i když Katka neučí. Skládá se z hotového.</p></div>
+    <div class="box"><h3>Proč skupinka</h3><p class="muted small" style="margin:0">Stejná hodina vynese asi třikrát víc. Má začátek a konec.</p></div>
+    <div class="box"><h3>Proč pohovor</h3><p class="muted small" style="margin:0">Lidé mají termín a zaplatí. Jasná specializace, málo konkurence.</p></div>
+  </div>
+  <p class="muted small" style="margin-top:10px">Další balíčky (Do práce, Gramatika) přidat, až se první prodává.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+  <p class="num">Web</p>
+  <h2>Prototyp 4B: verze 4, jen menší</h2>
+  <p class="lead">Základ zůstává: test jako hlavní tlačítko, obchod, konzultace. Ubude, co teď nepotřebujeme.</p>
+  <div class="grid g2">
+    <div class="box pro"><h3>Zůstane</h3><ul>
+      <li>Úvodní stránka s testem a třemi cestami.</li>
+      <li>Obchod, na začátek s jedním balíčkem.</li>
+      <li>Lekce: 1:1, skupinky, Pohovor na míru.</li>
+      <li>Zdarma: test a cvičení.</li>
+      <li>Konzultace, blog, O mně.</li>
+    </ul></div>
+    <div class="box con"><h3>Zmizí</h3><ul>
+      <li>Stránka Pro firmy.</li>
+      <li>Klub na míru.</li>
+      <li>Kurzy na doma a trenažér v obchodě.</li>
+      <li>Zmínky o týmu lektorů.</li>
+    </ul></div>
+  </div>
+  <div class="box" style="margin-top:14px"><p style="margin:0"><b>Menu se třemi položkami:</b> Obchod · Lekce · Zdarma. Všechno jde postavit na MioWebu bez vývoje.</p></div>
+  <div class="btns">
+    <a class="btn" data-local="prototyp/web-4b.html" href="https://jakubsmolek.github.io/anglictina-prototyp-4b/" target="_blank" rel="noopener">Otevřít prototyp 4B</a>
+    <a class="btn ghost" data-local="prototyp/web-4.html" href="https://jakubsmolek.github.io/anglictina-prototyp-4/" target="_blank" rel="noopener">Pro srovnání: prototyp 4</a>
+  </div>
+  <p class="muted small" style="margin-top:10px">Prototyp 4B je hotový a odpovídá tomuto plánu: tři položky v menu, jeden balíček v obchodě, žádné firmy ani Klub.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+  <p class="num">Co to obnáší</p>
+  <h2>Kolik práce to znamená</h2>
+  <div class="grid g2">
+    <div class="box"><h3>Katka jednorázově</h3><ul>
+      <li>Odpovědi na otázky, fotky, souhlasy s referencemi.</li>
+      <li>Cena balíčku, kontrola slovíček a testu.</li>
+      <li>Schválit texty stránek.</li>
+    </ul></div>
+    <div class="box"><h3>Katka průběžně</h3><ul>
+      <li>Konzultace: například 4 týdně po 20 minutách.</li>
+      <li>Instagram: tři krátké příspěvky týdně, natočené najednou.</li>
+      <li>E-mail: doplnit jednu frázi do šablony.</li>
+      <li>Skupinka: asi 10 hodin, čtyřikrát ročně.</li>
+    </ul></div>
+    <div class="box"><h3>Jakub</h3><ul>
+      <li>Stránky v MioWebu, košík, kalendář, měření.</li>
+      <li>Test s e-mailem, tahák k balíčku.</li>
+      <li>Šablona e-mailu a jeden článek měsíčně ke schválení.</li>
+    </ul></div>
+    <div class="box"><h3>Náklady</h3><ul>
+      <li>Nic navíc proti dnešku.</li>
+      <li>Žádný vývoj vlastní aplikace.</li>
+    </ul></div>
+  </div>
+  <p class="warn">Odhadem 2–3 hodiny Katčiny práce týdně mimo učení, v týdnech se skupinkou o hodinu a půl víc.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+  <p class="num">Peníze</p>
+  <h2>Co od toho čekat, střízlivě</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Zdroj</th><th>Předpoklad v prvním roce</th><th>Měsíčně</th><th>Katčin čas měsíčně</th></tr></thead>
+    <tbody>
+      <tr><td>Balíčky</td><td>10 prodaných měsíčně po 390 Kč</td><td>3 900 Kč</td><td>žádný</td></tr>
+      <tr><td>Pohovor na míru</td><td>2 klienti měsíčně po 2 990 Kč</td><td>5 980 Kč</td><td>asi 7 hodin</td></tr>
+      <tr><td>Skupinky</td><td>4 kurzy ročně, průměrně 5 lidí</td><td>asi 3 300 Kč</td><td>asi 3,5 hodiny</td></tr>
+      <tr><td>Celkem navíc</td><td></td><td>asi 13 000 Kč</td><td>asi 10 hodin a konzultace</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid g2">
+    <div class="box pro"><h3>Co to přinese</h3><ul><li>Plnější a lépe placené hodiny.</li><li>První příjem, který nezávisí na učení.</li><li>Seznam kontaktů, ze kterého jde prodávat cokoli dalšího.</li></ul></div>
+    <div class="box con"><h3>Co to nepřinese</h3><ul><li>Velký příjem bez Katčiných hodin. Bez firem a lektorů poroste jen tak rychle, jak poroste počet kontaktů.</li><li>Hlavní příjem zůstane z lekcí.</li></ul></div>
+  </div>
+  <p class="warn"><b>Modelový výpočet, ne předpověď.</b> Skutečnou návštěvnost ani prodeje zatím neznáme.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+  <p class="num">Co dál</p>
+  <h2>Plán na šest měsíců</h2>
+  <div class="steps cols">
+    <div class="step"><b>Prosinec 2026</b><span>Web na MioWebu, test s e-mailem, balíček Na cesty v obchodě.</span></div>
+    <div class="step"><b>Leden 2027</b><span>Kampaň „Začněte testem“. Týdenní e-mail a Instagram.</span></div>
+    <div class="step"><b>Únor 2027</b><span>Stránka Pohovor na míru. Čekací listina na skupinku.</span></div>
+    <div class="step"><b>Březen 2027</b><span>Přihlášky do skupinky Před dovolenou s uzávěrkou.</span></div>
+    <div class="step"><b>Duben až květen 2027</b><span>První skupinka. Nabídka balíčku lidem z e-mailového seznamu.</span></div>
+    <div class="step"><b>Červen 2027</b><span>Vyhodnocení čísel a rozhodnutí, co přidat.</span></div>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>300</b><span>e-mailů do června</span></div>
+    <div class="fact"><b>40</b><span>prodaných balíčků</span></div>
+    <div class="fact"><b>1</b><span>plná skupinka</span></div>
+    <div class="fact"><b>6</b><span>klientů na pohovor</span></div>
+  </div>
+  <p class="muted small">Cíle jsou odhad. Slouží k tomu, aby bylo v červnu podle čeho rozhodovat.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+  <p class="num">Na později</p>
+  <h2>Kdy se vrátit k vynechaným věcem</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Co</th><th>Vrátit se, když</th></tr></thead>
+    <tbody>
+      <tr><td>Další balíčky</td><td>se první prodává aspoň 10× měsíčně</td></tr>
+      <tr><td>Kurz na doma</td><td>je přes 500 e-mailů a lidé se na něj ptají</td></tr>
+      <tr><td>Klub na míru</td><td>je přes 1 000 e-mailů a 30 lidí na čekací listině</td></tr>
+      <tr><td>Firmy</td><td>se ozve první firma sama, nebo bude čas aktivně obchodovat</td></tr>
+      <tr><td>Další lektoři</td><td>Katka odmítá zájemce, protože nemá volné termíny</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted" style="margin-top:14px">Podklady k těmto směrům jsou hotové v původní prezentaci a v dokumentech, nic se neztratí.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+  <p class="num">K rozhodnutí</p>
+  <h2>Pět otázek a čtyři kroky</h2>
+  <p class="muted small">Zaškrtávání slouží jen jako pomůcka při rozhovoru, nikam se neukládá.</p>
+  <div class="grid">
+    <label class="q"><input type="checkbox"><span><b>Souhlasíš s jednodušším plánem: test, balíček, skupinka, Pohovor na míru?</b></span></label>
+    <label class="q"><input type="checkbox"><span><b>Může být hlavním tlačítkem webu test, ne lekce zdarma?</b>Konzultace zůstane jako druhá cesta.</span></label>
+    <label class="q"><input type="checkbox"><span><b>Kolik konzultací zdarma týdně chceš nabízet?</b></span></label>
+    <label class="q"><input type="checkbox"><span><b>Chceš učit skupinku? Který den a čas?</b></span></label>
+    <label class="q"><input type="checkbox"><span><b>Sedí ceny 390, 1 990 a 2 990 Kč?</b>Za kolik prodáváš e-booky dnes?</span></label>
+  </div>
+  <h3 style="margin-top:22px">Kroky na tento týden</h3>
+  <div class="steps">
+    <div class="step"><b>Proklikat prototyp 4B v telefonu</b><span>Úvodní stránku, obchod a balíček Na cesty.</span></div>
+    <div class="step"><b>Odpovědět na pět otázek</b><span>Stačí krátce.</span></div>
+    <div class="step"><b>Zjistit čísla</b><span>Návštěvnost, počet e-mailů, prodeje e-booků za poslední rok.</span></div>
+    <div class="step"><b>Poslat fotky a cenu balíčku</b><span>Pak jde začít stavět v MioWebu.</span></div>
+  </div>
+</div></section>
+
+<nav class="bar" aria-label="Posun v prezentaci">
+  <button type="button" id="prev">← Zpět</button>
+  <span id="pos"></span>
+  <button type="button" class="next" id="next">Dál →</button>
+</nav>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const pos = document.getElementById('pos'), prev = document.getElementById('prev'), next = document.getElementById('next');
+  let cur = 0;
+
+  // Která strana je právě vidět
+  function current() {
+    const mid = window.innerHeight * 0.4;
+    let best = 0;
+    slides.forEach((s, i) => { if (s.getBoundingClientRect().top <= mid) best = i; });
+    return best;
+  }
+  function update() {
+    cur = current();
+    pos.textContent = (cur + 1) + ' / ' + slides.length;
+    prev.disabled = cur === 0;
+    next.disabled = cur === slides.length - 1;
+  }
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    slides[i].scrollIntoView({ block: 'start' });
+  }
+  prev.addEventListener('click', () => go(current() - 1));
+  next.addEventListener('click', () => go(current() + 1));
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(current() + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(current() - 1); }
+  });
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+
+  // Když se prezentace otevře ze složky v počítači, odkazy vedou na místní soubory
+  if (location.protocol === 'file:') {
+    document.querySelectorAll('a[data-local]').forEach(a => { a.href = a.dataset.local; });
+  }
+</script>
+</body>
+</html>
